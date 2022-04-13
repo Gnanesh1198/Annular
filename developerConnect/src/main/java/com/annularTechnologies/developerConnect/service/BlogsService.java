@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.annularTechnologies.developerConnect.Model.BlogsEntity;
 import com.annularTechnologies.developerConnect.Model.DeveloperEntity;
-import com.annularTechnologies.developerConnect.Model.PostEntity;
+import com.annularTechnologies.developerConnect.Model.SkillTestEntity;
 import com.annularTechnologies.developerConnect.repository.BlogsRepository;
 import com.annularTechnologies.developerConnect.repository.DeveloperRepository;
-import com.annularTechnologies.developerConnect.repository.PostRepository;
+import com.annularTechnologies.developerConnect.repository.SkillTestRepository;
 
 @Service
 public class BlogsService {

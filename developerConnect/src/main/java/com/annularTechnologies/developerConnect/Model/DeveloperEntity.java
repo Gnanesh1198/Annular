@@ -1,6 +1,8 @@
 package com.annularTechnologies.developerConnect.Model;
 
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,6 +16,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 @Table(name = "developer")
 public class DeveloperEntity {
@@ -25,6 +30,8 @@ public class DeveloperEntity {
 	@Column
 	private String username;
 	@Column
+	private String email;
+	@Column
 	private String mobile;
 	@Column
 	private String skills;
@@ -32,6 +39,12 @@ public class DeveloperEntity {
 	private String experience;
 	@Column
 	private String project;
+	@Column
+	@CreationTimestamp
+	private Date created_on;
+	@Column
+	@UpdateTimestamp
+	private Date updated_on;
 	
 //	@OneToMany(targetEntity = DeveloperEntity.class, cascade = CascadeType.ALL)
 //	@JoinColumn(name = "dev_id", referencedColumnName = "id")
@@ -59,6 +72,31 @@ public class DeveloperEntity {
 //	public void setPost(List<PostEntity> posts) {
 //		this.posts = posts;
 //	}
+
+
+	public Date getCreated_on() {
+		return created_on;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setCreated_on(Date created_on) {
+		this.created_on = created_on;
+	}
+
+	public Date getUpdated_on() {
+		return updated_on;
+	}
+
+	public void setUpdated_on(Date updated_on) {
+		this.updated_on = updated_on;
+	}
 
 	public DeveloperEntity() {
 		super();

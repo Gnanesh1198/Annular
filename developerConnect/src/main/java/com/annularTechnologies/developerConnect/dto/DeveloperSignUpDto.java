@@ -33,8 +33,15 @@ public class DeveloperSignUpDto {
 	private String skills;
 	private String experience;
 	private String project;
+	private String email;
 	
 	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getUsername() {
 		return username;
 	}

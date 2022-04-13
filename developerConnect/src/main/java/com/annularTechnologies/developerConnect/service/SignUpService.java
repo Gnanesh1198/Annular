@@ -60,6 +60,7 @@ public class SignUpService {
 			developer.setSkills(developerReq.getSkills());
 			developer.setExperience(developerReq.getExperience());
 			developer.setProject(developerReq.getProject());
+			developer.setEmail(developerReq.getEmail());
 			
 			developerRepo.save(developer);
 			

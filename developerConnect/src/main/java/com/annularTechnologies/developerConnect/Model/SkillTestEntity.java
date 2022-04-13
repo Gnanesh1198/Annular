@@ -18,72 +18,49 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="post")
-public class PostEntity {
+@Table(name="skill_test")
+public class SkillTestEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonIgnore
 	private Long id;
-	private String query;
-	@Temporal(TemporalType.TIMESTAMP)
-	@JsonIgnore
+	private String languages;
+	@CreationTimestamp
 	private Date created_at;
-	
-	@ManyToOne(targetEntity = DeveloperEntity.class, cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "dev_id", referencedColumnName = "id")
-	@JsonIgnore
-	private DeveloperEntity developerEntity;
+	@UpdateTimestamp
+	private Date update_at;
 	
 	
-	public DeveloperEntity getDeveloperEntity() {
-		return developerEntity;
-	}
-
-
-
-	public void setDeveloperEntity(DeveloperEntity developerEntity) {
-		this.developerEntity = developerEntity;
-	}
-
-
-
-	@PrePersist
-	private void onCreate() {
-		created_at = new Date();
-	}
-	
-	
-	
-	public Date getCreated_at() {
-		return created_at;
-	}
-	public void setCreated_at(Date created_at) {
-		this.created_at = created_at;
-	}
-	public PostEntity() {
-		super();
-	}
-	public PostEntity( String query) {
-		super();
-		this.query = query;
-	}
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getQuery() {
-		return query;
+	public String getLanguages() {
+		return languages;
 	}
-	public void setQuery(String query) {
-		this.query = query;
+	public void setLanguages(String languages) {
+		this.languages = languages;
 	}
+	public Date getCreated_at() {
+		return created_at;
+	}
+	public void setCreated_at(Date created_at) {
+		this.created_at = created_at;
+	}
+	public Date getUpdate_at() {
+		return update_at;
+	}
+	public void setUpdate_at(Date update_at) {
+		this.update_at = update_at;
+	}
+	
 
 	
 	

@@ -1,10 +1,15 @@
 package com.annularTechnologies.developerConnect.Model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name="recruiter")
@@ -17,11 +22,27 @@ public class RecruiterEntity {
 	private String username;
 	private String password;
 	private String mobile;
+	@CreationTimestamp
+	private Date created_on;
+	@UpdateTimestamp
+	private Date updated_on;
 	
 	
 	
 	
 	
+	public Date getCreated_on() {
+		return created_on;
+	}
+	public void setCreated_on(Date created_on) {
+		this.created_on = created_on;
+	}
+	public Date getUpdated_on() {
+		return updated_on;
+	}
+	public void setUpdated_on(Date updated_on) {
+		this.updated_on = updated_on;
+	}
 	public RecruiterEntity() {
 		super();
 	}

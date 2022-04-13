@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.annularTechnologies.developerConnect.Model.BlogsEntity;
-import com.annularTechnologies.developerConnect.Model.PostEntity;
+import com.annularTechnologies.developerConnect.Model.SkillTestEntity;
 import com.annularTechnologies.developerConnect.repository.BlogsRepository;
-import com.annularTechnologies.developerConnect.repository.PostRepository;
+import com.annularTechnologies.developerConnect.repository.SkillTestRepository;
 import com.annularTechnologies.developerConnect.service.BlogsService;
 
 
