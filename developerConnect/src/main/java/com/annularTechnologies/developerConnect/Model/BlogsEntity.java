@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -23,13 +24,21 @@ public class BlogsEntity {
 	@JsonIgnore
 	private Long id;
 	private String content;
-	@JsonIgnore
-	private byte image;
+	@Lob
+	private byte[] image;
 	
 	@ManyToOne(targetEntity = DeveloperEntity.class, cascade = CascadeType.PERSIST)
 	@JoinColumn(name= "dev_id", referencedColumnName = "id")
-	@JsonIgnore
 	private DeveloperEntity developerEntity;
+	
+	
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
 
 	public Long getId() {
 		return id;
@@ -47,14 +56,6 @@ public class BlogsEntity {
 		this.content = content;
 	}
 
-	public byte getImage() {
-		return image;
-	}
-
-	public void setImage(byte image) {
-		this.image = image;
-	}
-
 	public DeveloperEntity getDeveloperEntity() {
 		return developerEntity;
 	}
@@ -63,14 +64,11 @@ public class BlogsEntity {
 		this.developerEntity = developerEntity;
 	}
 
-	public BlogsEntity(String content, byte image) {
-		super();
-		this.content = content;
-		this.image = image;
-	}
-
 	public BlogsEntity() {
-		super();
+		
 	}
 
+//	public BlogsEntity(String string, String filename, String contentType, byte[] bytes) {
+//		// TODO Auto-generated constructor stub
+//	}
 }

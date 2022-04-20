@@ -1,5 +1,6 @@
 package com.annularTechnologies.developerConnect.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.annularTechnologies.developerConnect.Model.BlogsEntity;
 import com.annularTechnologies.developerConnect.Model.SkillTestEntity;
@@ -31,26 +34,13 @@ public class BlogsController {
 	@Autowired
 	BlogsService blogsService;
 	
+	@PostMapping("/addBlogs")
+	public BlogsEntity uploadBlog(@RequestParam("image")  MultipartFile file, @RequestParam("content")  String content, @RequestParam("devId")  Long devId ) throws IOException {
+		return blogsService.saveBlogs(file, content, devId);
+	}
+	
 	@GetMapping("/getBlogs")
-	public List<BlogsEntity> getBlogs() {
-		return blogsRepo.findAll();
+	public List<BlogsEntity> AllBlogs() {
+		return blogsService.getAllBlogs();
 	}
-	
-	@PostMapping("/createBlogs/{devId}")
-	public Optional<Object> createBlogs(@PathVariable(value ="devId") Long devId, @RequestBody BlogsEntity blogs){
-		return blogsService.saveBlogs(devId, blogs);
-	}
-	
-	
-	@PutMapping("/{blogId}")
-	public Optional<Object> updateBlogs(@PathVariable(value = "blogId") Long blogId, @RequestBody BlogsEntity blogs){
-		return blogsService.update(blogId, blogs);
-	}
-	
-	@DeleteMapping("/{blogId}")
-	public Optional<Object> deleteBlog(@PathVariable(value = "blogId") Long blogId){
-		return blogsService.delete(blogId);
-	}
-
-
 }
